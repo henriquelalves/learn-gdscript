@@ -175,6 +175,21 @@ web_debug(){
 }
 
 
+web_release(){
+  if [ "$1" == "help" ]; then
+    echo "Exports the web build in release mode, starts a python webserver,"
+    echo "and watches."
+    echo "the directory for changes. Require Python 3 and inotifywait to"
+    echo "be in your \$PATH"
+    exit 0
+  fi
+  echo "You need the custom templates. Please make sure to run prepare:local at least once!"
+  clean_web
+  export_web
+  web_server &
+  web_watch
+}
+
 ######################################## EXPORTS
 
 
